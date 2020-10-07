@@ -1,0 +1,31 @@
+import cv2
+import numpy as np
+
+
+def gaussian(image):
+    gp=[image]
+    for i in range(6):
+        image=cv2.pyrDown(image)
+        gp.append(image)
+        cv2.imshow(str(image.shape),image)
+    return gp
+
+def laplacian(image):
+    gp=[image]
+    for i in range(6):
+        image=cv2.pyrDown(image)
+        gp.append(image)
+    lp=[gp[5]]
+    for i in range (5,0,-1):
+        gauss_expand=cv2.pyrUp(gp[i])
+        lap=cv2.subtract(gp[i-1],gauss_expand)
+        lp.append(lap)
+        cv2.imshow(str(i),lap)
+    return lp
+
+
+image=cv2.imread("apple.jpg")
+gaussian(image)
+laplacian(image)
+cv2.waitKey()
+cv2.destroyAllWindows()

@@ -1,0 +1,88 @@
+
+import cv2
+import numpy as np
+img=cv2.imread("lena.jpg",-1)
+cv2.imshow("lona ji ka pic",img)
+cv2.waitKey(5555)
+cv2.destroyAllWindows()
+print(img.shape)
+print("hight of img",int(img.shape[0]),"pixels")
+print("width of img",int(img.shape[1]),"pixels")
+cv2.imwrite("lena1.jpg",img)
+
+
+
+
+
+
+import cv2
+import numpy as np
+img=cv2.imread("virat.jpg",-1)
+cv2.imshow("virat kohali pic",img)
+cv2.waitKey(5555)
+cv2.destroyAllWindows()
+print(img.shape)
+
+
+
+
+
+
+import cv2
+import numpy as np
+img=cv2.imread("lena.jpg",-1)
+cv2.imshow("tom",img)
+cv2.waitKey(55556)
+cv2.destroyAllWindows()
+gl=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+cv2.imshow("grey lena",gl)
+cv2.waitKey(55556)
+cv2.destroyAllWindows()
+print(gl.shape)
+
+# img=cv2.imread("./lena1.jpg")
+B,G,R=cv2.split(img)
+print(B.shape)
+cv2.imshow("original",img)
+cv2.imshow("red",B)
+cv2.imshow("green",G)
+cv2.imshow("blue",R)
+cv2.waitKey(55556)
+cv2.destroyAllWindows()
+
+
+
+merge=cv2.merge([B,G,R+111])
+cv2.imshow("merged image",merge)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+merge=cv2.merge([B,G+225,R])
+cv2.imshow("merged image",merge)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+merge=cv2.merge([B+165,G,R])
+cv2.imshow("merged image",merge)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+merge=cv2.merge([B+165,G+222,R])
+cv2.imshow("merged image",merge)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+merge=cv2.merge([B+165,G+222,R+111])
+cv2.imshow("merged image",merge)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+
+
+
+
+
+
+print("hight of img",int(img.shape[0]),"pixels")
+print("width of img",int(img.shape[1]),"pixels")
+cv2.imwrite("virat-copy.jpg",img)

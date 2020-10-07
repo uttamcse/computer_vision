@@ -1,0 +1,39 @@
+
+import cv2
+import numpy as np
+img=cv2.VideoCapture(0)
+check,frame=img.read()
+
+cv2.imshow("my img",frame)
+cv2.waitKey(55556)
+print(frame.shape)
+cv2.imwrite("my img.jpg",frame)
+img.release()
+cv2.destroyAllWindows()
+
+
+
+
+
+
+
+import cv2
+import numpy as np
+img=cv2.VideoCapture(0)
+count=0
+while(1):
+    check,frame=img.read()
+
+    cv2.imshow("my img",frame)
+    if cv2.waitKey()==ord("q"):
+        break;
+print(frame.shape)
+cv2.imwrite("my img.jpg"+ str(count)+".jpg",frame)
+img.release()
+cv2.destroyAllWindows()
+
+
+
+
+
+

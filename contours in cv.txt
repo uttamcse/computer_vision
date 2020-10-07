@@ -1,0 +1,67 @@
+import cv2
+import numpy as np
+original_img=cv2.imread("opencv-logo.png")
+
+img=cv2.cvtColor(original_img,cv2.COLOR_BGR2GRAY)
+
+RET,img=cv2.threshold(img,170,225,0)
+img=cv2.Canny(img,30,70)
+
+# contours,hierarchy=cv2.findContours(img,cv2.RETR_TREE,cv2.CHAIN_APPROX_TC89_L1)
+# contours,hierarchy=cv2.findContours(img,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+# contours,hierarchy=cv2.findContours(img,cv2.RETR_TREE,cv2.CHAIN_APPROX_TC89_KCOS)
+contours,hierarchy=cv2.findContours(img,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+cv2.drawContours(original_img,contours,-1,(200,100,0),5)
+print(len(contours))
+print(contours)
+
+
+
+cv2.imshow("original",original_img)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+
+
+
+
+
+
+
+
+
+
+
+
+import cv2
+import numpy as np
+original_img=cv2.imread("opencv-logo.png")
+
+img=cv2.cvtColor(original_img,cv2.COLOR_BGR2HSV)
+
+lr=np.array((0,70,70))
+ur=np.array((10,255,255))
+mask1=cv2.inRange(img,lr,ur)
+
+lr=np.array((170,70,70))
+ur=np.array((180,255,255))
+mask2=cv2.inRange(img,lr,ur)
+
+mask=mask1+mask2
+
+
+
+
+contours,hierarchy=cv2.findContours(mask,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+cv2.drawContours(original_img,contours,-1,(200,100,0),5)
+print(len(contours))
+print(contours)
+
+
+
+cv2.imshow("original",original_img)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+
+

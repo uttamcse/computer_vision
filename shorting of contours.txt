@@ -1,0 +1,35 @@
+import cv2
+import numpy as np
+
+original_image=cv2.imread("shapes.jpg")
+image=cv2.cvtColor(original_image,cv2.COLOR_BGR2GRAY)
+
+
+
+ret,image=cv2.threshold(image,70,255,0)
+
+
+#cv2.imshow("image",image)
+
+
+contours,hierarchy=cv2.findContours(image,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+
+
+sorted_contours=sorted(contours,key=cv2.contourArea,reverse=False)[:3]
+
+
+for i,cnt in enumerate(sorted_contours):
+    
+    m=cv2.moments(cnt)
+    cx=int(m["m10"]/m["m00"])
+    cy=int(m["m01"]/m["m00"])
+    
+    
+    cv2.drawContours(original_image,[cnt],-1,(200,100,0),3)
+    cv2.putText(original_image,str(i+1),(cx,cy),cv2.FONT_HERSHEY_SIMPLEX,1,(255,200,0),1)
+    
+    cv2.imshow("sorted",original_image)
+    cv2.waitKey()
+#cv2.imshow("original_image",original_image)
+cv2.waitKey()
+cv2.destroyAllWindows()

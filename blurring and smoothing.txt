@@ -1,0 +1,46 @@
+import cv2
+import numpy as np
+
+image1=cv2.imread("apple.jpg")
+
+kernel_5x5=(np.ones((5,5),np.uint8))/25
+kernel_9x9=(np.ones((9,9),np.uint8))/81
+
+image2=cv2.filter2D(image1, -1,kernel_5x5)
+image3=cv2.filter2D(image1, -1,kernel_9x9)
+
+image4=cv2.blur(image1,(5,5))
+
+
+image5=cv2.GaussianBlur(image1,(5,5),0)
+
+image6=cv2.medianBlur(image1,5)
+
+
+
+image7=cv2.bilateralFilter(image1,9,75,75)
+
+cv2.imshow("original",image1)
+
+#cv2.imshow("filter2d",image2)
+#cv2.imshow("filter2d2",image3)
+
+cv2.imshow("Blur",image4)
+
+cv2.imshow("Gaussian",image5)
+
+cv2.imshow("Bilateral",image6)
+
+cv2.imshow("median",image7)
+
+
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+
+
+
+
+
+
+

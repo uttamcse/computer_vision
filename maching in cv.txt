@@ -1,0 +1,35 @@
+import cv2
+import numpy as np
+
+original_image=cv2.imread("shapes.jpg")
+template_image=cv2.imread("template.jpg")
+
+image=cv2.cvtColor(original_image,cv2.COLOR_BGR2GRAY)
+image1=cv2.cvtColor(template_image,cv2.COLOR_BGR2GRAY)
+
+
+ret,image=cv2.threshold(image,70,255,0)
+ret,image1=cv2.threshold(image1,70,255,0)
+
+contours,hierarchy=cv2.findContours(image1,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+sorted_contours=sorted(contours,key=cv2.contourArea,reverse=True)
+template_contours=sorted_contours[1]
+
+contours,hierarchy=cv2.findContours(image,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+sorted_contours=sorted(contours,key=cv2.contourArea,reverse=True)[1:]
+
+
+for c in sorted_contours:
+    
+    match=cv2.matchShapes(template_contours,c,2,0.0)
+    print(match)    
+    
+    if match < 0.2:
+        cnt=c
+    else:
+        cnt=[]
+
+cv2.drawContours(original_image,[cnt],-1,(200,100,0),3)
+cv2.imshow("original_image",original_image)
+cv2.waitKey()
+cv2.destroyAllWindows()

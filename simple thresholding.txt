@@ -1,0 +1,27 @@
+import cv2
+
+image1=cv2.imread("lena1.jpg")
+
+image1=cv2.cvtColor(image1,cv2.COLOR_BGR2GRAY)
+
+ret,image2=cv2.threshold(image1,140,225,cv2.THRESH_BINARY)
+ret,image3=cv2.threshold(image1,140,225,cv2.THRESH_BINARY_INV)
+ret,image4=cv2.threshold(image1,140,225,cv2.THRESH_TRUNC)
+ret,image5=cv2.threshold(image1,140,225,cv2.THRESH_TOZERO)
+ret,image6=cv2.threshold(image1,140,225,cv2.THRESH_TOZERO_INV)
+
+
+
+cv2.imshow("original",image1)
+cv2.imshow("Binary",image2)
+cv2.imshow("binary inv",image3)
+cv2.imshow("TRunc",image4)
+cv2.imshow("Tozero",image5)
+cv2.imshow("Tozero inv",image6)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+
+
+
+

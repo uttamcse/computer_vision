@@ -1,0 +1,92 @@
+import cv2
+import numpy as np
+
+img=np.zeros((512,512,3),np.uint8)
+
+img=cv2.imread("lena.jpg")
+print(img.shape)
+
+
+cv2.imshow("image",img1)
+
+cv2.waitKey()
+cv2.destroyAllWind
+
+
+
+
+
+
+import cv2
+import numpy as np
+
+img1=np.zeros((512,512,3),np.uint8)
+
+img=cv2.imread("lena.jpg")
+print(img.shape)
+
+cv2.line(img,(10,10),(222,222),(0,255,0),5)
+
+
+cv2.imshow("image",img1)
+cv2.imshow("image_line",img)
+cv2.waitKey()
+cv2.destroyAllWind
+
+
+
+
+
+
+
+
+import cv2
+import numpy as np
+
+img1=np.zeros((512,512,3),np.uint8)
+
+img=cv2.imread("lena.jpg")
+print(img.shape)
+
+cv2.line(img,(10,10),(222,222),(0,255,0),5)
+cv2.line(img1,(10,10),(222,222),(110,255,30),5)
+
+cv2.imshow("image",img1)
+cv2.imshow("image_line",img)
+cv2.waitKey()
+cv2.destroyAllWind
+
+
+
+
+
+
+import cv2
+import numpy as np
+
+img1=np.zeros((512,512,3),np.uint8)
+
+
+img=cv2.imread("lena.jpg")
+print(img.shape)
+
+cv2.line(img,(55,22),(333,333),(0,255,0),2)
+cv2.line(img1,(55,22),(333,333),(110,255,30),2)
+
+cv2.arrowedLine(img1,(10,10),(222,222),(110,255,30),2)
+cv2.arrowedLine(img,(10,10),(222,222),(110,255,30),2)
+
+cv2.rectangle(img,(11,77),(222,333),(222,54,64),-1)
+cv2.rectangle(img1,(11,77),(222,333),(222,54,64),-1)
+
+cv2.circle(img,(222,333),111,(36,87,54),-1)
+cv2.circle(img1,(222,333),111,(36,87,54),-1)
+
+cv2.putText(img,"hello",(200,200),cv2.FONT_HERSHEY_COMPLEX_SMALL,3,(44,243,55),2)
+cv2.putText(img1,"hello",(200,200),cv2.FONT_HERSHEY_COMPLEX_SMALL,3,(44,243,55),2)
+
+
+cv2.imshow("image",img1)
+cv2.imshow("image_line",img)
+cv2.waitKey()
+cv2.destroyAllWindows()
